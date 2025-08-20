@@ -1,7 +1,7 @@
-# Instead of importing at module level
-# from frappe.core.doctype.user.user import User
+__version__ = '0.0.1'
 
-# Move it inside functions where it's needed
-def some_function():
+try:
     from frappe.core.doctype.user.user import User
-    # ... rest of your code
+except ImportError:
+    # Frappe not available during installation
+    User = None

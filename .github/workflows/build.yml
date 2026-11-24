@@ -21,6 +21,8 @@ jobs:
           node-version: 22
       # vite.config.js reads the bench's sites/common_site_config.json (dev proxy port), as if the app
       # sat in apps/getpos inside a bench: give it one, the build itself never uses the port
-      - run: mkdir -p ../../../sites && echo '{"webserver_port": 8000}' > ../../../sites/common_site_config.json
+      - run: |
+          mkdir -p ../../../sites
+          echo '{"webserver_port": 8000}' > ../../../sites/common_site_config.json
       - run: corepack enable && yarn install --frozen-lockfile
       - run: yarn build
